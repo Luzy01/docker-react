@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t luzy/docker-react -f Dockerfile.dev .
+
+script:
+  - docker tun -e CI=true luzy/docker-react npm run test -- --coverage 
